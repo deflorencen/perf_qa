@@ -21,3 +21,7 @@ class BasePage:
 
     def result_should_be(self, text: str):
         expect(self.result_text).to_have_text(text)
+
+
+    def result_should_not_be_visible(self):
+        expect(self.result_text).not_to_be_visible()
