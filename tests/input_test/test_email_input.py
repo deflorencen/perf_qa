@@ -1,7 +1,5 @@
 
 import pytest
-from playwright.sync_api import Page
-from pages.inputs.email_input_page import EmailInputPage
 
 
 # POSITIVE TEST
@@ -15,12 +13,9 @@ from pages.inputs.email_input_page import EmailInputPage
         "test@localhost",          # localhost allowed
     ]
 )
-def test_email_accepts_valid_input(page: Page, email):
-    email_page = EmailInputPage(page)
-
+def test_email_accepts_valid_input(email_page, email):
     email_page.open()
     email_page.submit_email(email)
-
     email_page.result_should_be(email)
 
 # NEGATIVE TEST
@@ -38,11 +33,8 @@ def test_email_accepts_valid_input(page: Page, email):
         "user@домен.com",       # cyrillic
     ]
 )
-def test_email_rejects_invalid_input(page: Page, email):
-    email_page = EmailInputPage(page)
-
+def test_email_rejects_invalid_input(email_page, email):
     email_page.open()
     email_page.submit_email(email)
-
     email_page.result_should_not_be_visible()
 

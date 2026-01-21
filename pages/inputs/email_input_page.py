@@ -1,7 +1,8 @@
 from playwright.sync_api import Page
-from pages.base_page import BasePage
+from pages.base_result_page import BaseResultPage
 
-class EmailInputPage(BasePage):
+
+class EmailInputPage(BaseResultPage):
     URL = "https://www.qa-practice.com/elements/input/email"
 
     def __init__(self, page: Page):
@@ -10,4 +11,5 @@ class EmailInputPage(BasePage):
 
 
     def submit_email(self, email: str):
-        self.submit_and_enter(self.email_input, email)
+        self.email_input.fill(email)
+        self.email_input.press("Enter")

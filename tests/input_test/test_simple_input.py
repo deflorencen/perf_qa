@@ -1,9 +1,8 @@
 
 import pytest
-from playwright.sync_api import Page
-from pages.inputs.simple_input_page import InputPage
 
-#POSITIVE TEST
+
+# POSITIVE TEST
 @pytest.mark.parametrize(
     "text",
     [
@@ -13,16 +12,13 @@ from pages.inputs.simple_input_page import InputPage
         "test-user_01",         # hyphen + underscore
     ]
 )
-def test_input_accepts_valid_text(page: Page, text):
-    input_page = InputPage(page)
-
-    input_page.open()
-    input_page.submit_text(text)
-
-    input_page.result_should_be(text)
+def test_input_accepts_valid_text(simple_input_page, text):
+    simple_input_page.open()
+    simple_input_page.submit_text(text)
+    simple_input_page.result_should_be(text)
 
 
-#NEGATIVE TEST
+# NEGATIVE TEST
 @pytest.mark.parametrize(
     "text",
     [
@@ -33,13 +29,10 @@ def test_input_accepts_valid_text(page: Page, text):
         "привет",       # cyrillic
     ]
 )
-def test_input_rejects_invalid_text(page: Page, text):
-    input_page = InputPage(page)
-
-    input_page.open()
-    input_page.submit_text(text)
-
-    input_page.result_should_not_be_visible()
+def test_input_rejects_invalid_text(simple_input_page, text):
+    simple_input_page.open()
+    simple_input_page.submit_text(text)
+    simple_input_page.result_should_not_be_visible()
 
 
 

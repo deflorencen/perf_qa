@@ -1,7 +1,5 @@
 
 import pytest
-from playwright.sync_api import Page
-from pages.inputs.pass_input_page import PasswordInputPage
 
 
 # POSITIVE TEST
@@ -15,12 +13,9 @@ from pages.inputs.pass_input_page import PasswordInputPage
         "Aa1!Aa1!"
     ]
 )
-def test_input_password(page: Page, password):
-    password_page = PasswordInputPage(page)
-
+def test_input_password(password_page, password):
     password_page.open()
     password_page.submit_password(password)
-
     password_page.result_should_be(password)
 
 
@@ -38,10 +33,7 @@ def test_input_password(page: Page, password):
         "abcdefgh",
     ]
 )
-def test_password_rejects_invalid_input(page: Page, password):
-    password_page = PasswordInputPage(page)
-
+def test_password_rejects_invalid_input(password_page, password):
     password_page.open()
     password_page.submit_password(password)
-
     password_page.result_should_not_be_visible()
