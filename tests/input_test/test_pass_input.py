@@ -13,10 +13,10 @@ import pytest
         "Aa1!Aa1!"
     ]
 )
-def test_input_password(password_page, password):
-    password_page.open()
-    password_page.submit_password(password)
-    password_page.result_should_be(password)
+def test_input_password(app, password):
+    app.password_input_page.open()
+    app.password_input_page.submit_password(password)
+    app.password_input_page.result_should_be(password)
 
 
 # NEGATIVE TEST
@@ -33,7 +33,7 @@ def test_input_password(password_page, password):
         "abcdefgh",
     ]
 )
-def test_password_rejects_invalid_input(password_page, password):
-    password_page.open()
-    password_page.submit_password(password)
-    password_page.result_should_not_be_visible()
+def test_password_rejects_invalid_input(app, password):
+    app.password_input_page.open()
+    app.password_input_page.submit_password(password)
+    app.password_input_page.result_should_not_be_visible()

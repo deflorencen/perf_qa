@@ -12,10 +12,10 @@ import pytest
         "test-user_01",         # hyphen + underscore
     ]
 )
-def test_input_accepts_valid_text(simple_input_page, text):
-    simple_input_page.open()
-    simple_input_page.submit_text(text)
-    simple_input_page.result_should_be(text)
+def test_input_accepts_valid_text(app, text):
+    app.simple_input_page.open()
+    app.simple_input_page.submit_text(text)
+    app.simple_input_page.result_should_be(text)
 
 
 # NEGATIVE TEST
@@ -29,10 +29,10 @@ def test_input_accepts_valid_text(simple_input_page, text):
         "привет",       # cyrillic
     ]
 )
-def test_input_rejects_invalid_text(simple_input_page, text):
-    simple_input_page.open()
-    simple_input_page.submit_text(text)
-    simple_input_page.result_should_not_be_visible()
+def test_input_rejects_invalid_text(app, text):
+    app.simple_input_page.open()
+    app.simple_input_page.submit_text(text)
+    app.simple_input_page.result_should_not_be_visible()
 
 
 
