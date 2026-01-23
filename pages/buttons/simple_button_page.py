@@ -1,8 +1,9 @@
 from playwright.sync_api import Page, expect
 from pages.base_result_page import BaseResultPage
+from data.urls import Urls
 
 class SimpleButtonPage(BaseResultPage):
-    URL = "https://www.qa-practice.com/elements/button/simple"
+    URL = Urls.SIMPLE_BUTTON
 
     def __init__(self, page: Page):
         super().__init__(page)

@@ -14,9 +14,9 @@ import pytest
     ]
 )
 def test_input_password(app, password):
-    app.password_input_page.open()
-    app.password_input_page.submit_password(password)
-    app.password_input_page.result_should_be(password)
+    app.inputs.password_input_page.open()
+    app.inputs.password_input_page.submit_password(password)
+    app.inputs.password_input_page.result_should_be(password)
 
 
 # NEGATIVE TEST
@@ -34,6 +34,6 @@ def test_input_password(app, password):
     ]
 )
 def test_password_rejects_invalid_input(app, password):
-    app.password_input_page.open()
-    app.password_input_page.submit_password(password)
-    app.password_input_page.result_should_not_be_visible()
+    app.inputs.password_input_page.open()
+    app.inputs.password_input_page.submit_password(password)
+    app.inputs.password_input_page.result_should_not_be_visible()

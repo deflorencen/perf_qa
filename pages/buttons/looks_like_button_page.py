@@ -1,8 +1,9 @@
 from playwright.sync_api import Page, expect
+from data.urls import Urls
 from pages.base_result_page import BaseResultPage
 
 class LikeAButtonPage(BaseResultPage):
-    URL = "https://www.qa-practice.com/elements/button/like_a_button"
+    URL = Urls.LIKE_A_BUTTON
 
     def __init__(self, page: Page):
         super().__init__(page)

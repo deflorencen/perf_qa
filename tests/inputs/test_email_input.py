@@ -14,9 +14,9 @@ import pytest
     ]
 )
 def test_email_accepts_valid_input(app, email):
-    app.email_input_page.open()
-    app.email_input_page.submit_email(email)
-    app.email_input_page.result_should_be(email)
+    app.inputs.email_input_page.open()
+    app.inputs.email_input_page.submit_email(email)
+    app.inputs.email_input_page.result_should_be(email)
 
 # NEGATIVE TEST
 @pytest.mark.parametrize(
@@ -34,7 +34,7 @@ def test_email_accepts_valid_input(app, email):
     ]
 )
 def test_email_rejects_invalid_input(app, email):
-    app.email_input_page.open()
-    app.email_input_page.submit_email(email)
-    app.email_input_page.result_should_not_be_visible()
+    app.inputs.email_input_page.open()
+    app.inputs.email_input_page.submit_email(email)
+    app.inputs.email_input_page.result_should_not_be_visible()
 

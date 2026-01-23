@@ -12,9 +12,18 @@ class Application:
     def __init__(self, page: Page):
         self.page = page
 
+        self.inputs = InputsGroup(page)
+        self.buttons = ButtonsGroup(page)
+
+
+class InputsGroup:
+    def __init__(self, page: Page):
         self.simple_input_page = InputPage(page)
         self.email_input_page = EmailInputPage(page)
         self.password_input_page = PasswordInputPage(page)
+
+class ButtonsGroup:
+    def __init__(self, page: Page):
         self.simple_button_page = SimpleButtonPage(page)
         self.like_a_button_page = LikeAButtonPage(page)
         self.disable_button_page = DisableButtonPage(page)

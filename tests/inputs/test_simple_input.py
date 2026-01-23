@@ -1,4 +1,3 @@
-
 import pytest
 
 
@@ -13,9 +12,9 @@ import pytest
     ]
 )
 def test_input_accepts_valid_text(app, text):
-    app.simple_input_page.open()
-    app.simple_input_page.submit_text(text)
-    app.simple_input_page.result_should_be(text)
+    app.inputs.simple_input_page.open()
+    app.inputs.simple_input_page.submit_text(text)
+    app.inputs.result_should_be(text)
 
 
 # NEGATIVE TEST
@@ -30,9 +29,9 @@ def test_input_accepts_valid_text(app, text):
     ]
 )
 def test_input_rejects_invalid_text(app, text):
-    app.simple_input_page.open()
-    app.simple_input_page.submit_text(text)
-    app.simple_input_page.result_should_not_be_visible()
+    app.inputs.simple_input_page.open()
+    app.inputs.simple_input_page.submit_text(text)
+    app.inputs.simple_input_page.result_should_not_be_visible()
 
 
 

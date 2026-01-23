@@ -1,9 +1,10 @@
 from playwright.sync_api import Page
+from data.urls import Urls
 from pages.base_result_page import BaseResultPage
 
 
 class PasswordInputPage(BaseResultPage):
-    URL = "https://www.qa-practice.com/elements/input/passwd"
+    URL = Urls.PASSWORD_INPUT
 
     def __init__(self, page: Page):
         super().__init__(page)
