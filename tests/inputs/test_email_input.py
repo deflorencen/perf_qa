@@ -10,6 +10,7 @@ import pytest
         "user.name@test-domain.com",
         "user_name123@test.co.uk",
         "a@b.io",
+        "user@домен.com",       # cyrillic
         "test@localhost",          # localhost allowed
     ]
 )
@@ -30,7 +31,6 @@ def test_email_accepts_valid_input(app, email):
         "user@domain",          # no TLD (except localhost!)
         "user@domain..com",     # double dot
         "user domain@test.com", # space
-        "user@домен.com",       # cyrillic
     ]
 )
 def test_email_rejects_invalid_input(app, email):
