@@ -3,11 +3,12 @@ from data.urls import Urls
 from pages.base_result_page import BaseResultPage
 
 class DisableButtonPage(BaseResultPage):
-    URL = Urls.DISABLE_BUTTON
+    URL = Urls.Elements.Buttons.DISABLED
 
     def __init__(self, page: Page):
         super().__init__(page)
-        self.submit_button = page.get_by_role("button", name="Submit")
+        # self.submit_button = page.get_by_role("button", name="Submit")
+        self.submit_button = page.locator("#submit-id-submit")
         self.state_dropdown = page.locator("#id_select_state")
 
 

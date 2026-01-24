@@ -4,7 +4,7 @@ from pages.base_result_page import BaseResultPage
 
 
 class EmailInputPage(BaseResultPage):
-    URL = Urls.EMAIL_INPUT
+    URL = Urls.Elements.Inputs.EMAIL
 
     def __init__(self, page: Page):
         super().__init__(page)

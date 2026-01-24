@@ -4,7 +4,7 @@ from data.urls import Urls
 
 
 class InputPage(BaseResultPage):
-    URL = Urls.SIMPLE_INPUT
+    URL = Urls.Elements.Inputs.SIMPLE
 
     def __init__(self, page: Page):
         super().__init__(page)

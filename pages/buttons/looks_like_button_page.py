@@ -3,7 +3,7 @@ from data.urls import Urls
 from pages.base_result_page import BaseResultPage
 
 class LikeAButtonPage(BaseResultPage):
-    URL = Urls.LIKE_A_BUTTON
+    URL = Urls.Elements.Buttons.LIKE_A_BUTTON
 
     def __init__(self, page: Page):
         super().__init__(page)

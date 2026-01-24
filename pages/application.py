@@ -5,7 +5,7 @@ from pages.inputs.email_input_page import EmailInputPage
 from pages.inputs.pass_input_page import PasswordInputPage
 from pages.inputs.simple_input_page import InputPage
 from pages.buttons.simple_button_page import SimpleButtonPage
-from pages.buttons.disable_button_page import DisableButtonPage
+from pages.buttons.disabled_button_page import DisableButtonPage
 
 
 class Application:

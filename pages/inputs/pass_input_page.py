@@ -4,7 +4,7 @@ from pages.base_result_page import BaseResultPage
 
 
 class PasswordInputPage(BaseResultPage):
-    URL = Urls.PASSWORD_INPUT
+    URL = Urls.Elements.Inputs.PASSWORD
 
     def __init__(self, page: Page):
         super().__init__(page)

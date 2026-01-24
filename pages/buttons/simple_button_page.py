@@ -3,7 +3,7 @@ from pages.base_result_page import BaseResultPage
 from data.urls import Urls
 
 class SimpleButtonPage(BaseResultPage):
-    URL = Urls.SIMPLE_BUTTON
+    URL = Urls.Elements.Buttons.SIMPLE
 
     def __init__(self, page: Page):
         super().__init__(page)
