@@ -1,16 +1,9 @@
 import pytest
+from data.test_data import SimpleInputData
 
 
 # POSITIVE TEST
-@pytest.mark.parametrize(
-    "text",
-    [
-        "ab",                   # min length
-        "hello_123",            # valid
-        "a" * 25,               # max length
-        "test-user_01",         # hyphen + underscore
-    ]
-)
+@pytest.mark.parametrize("text", SimpleInputData.VALID_TEXTS)
 def test_input_accepts_valid_text(app, text):
     app.inputs.simple_input_page.open()
     app.inputs.simple_input_page.submit_text(text)
@@ -18,16 +11,7 @@ def test_input_accepts_valid_text(app, text):
 
 
 # NEGATIVE TEST
-@pytest.mark.parametrize(
-    "text",
-    [
-        "",             # required
-        "a",            # too short
-        "a" * 26,       # too long
-        "hello!!!",     # invalid chars
-        "привет",       # cyrillic
-    ]
-)
+@pytest.mark.parametrize("text", SimpleInputData.INVALID_TEXTS)
 def test_input_rejects_invalid_text(app, text):
     app.inputs.simple_input_page.open()
     app.inputs.simple_input_page.submit_text(text)

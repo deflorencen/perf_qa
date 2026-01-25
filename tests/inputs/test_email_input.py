@@ -1,38 +1,17 @@
-
 import pytest
+from data.test_data import EmailData
 
 
 # POSITIVE TEST
-@pytest.mark.parametrize(
-    "email",
-    [
-        "test@example.com",
-        "user.name@test-domain.com",
-        "user_name123@test.co.uk",
-        "a@b.io",
-        "user@домен.com",       # cyrillic
-        "test@localhost",          # localhost allowed
-    ]
-)
+@pytest.mark.parametrize("email", EmailData.VALID_EMAILS)
 def test_email_accepts_valid_input(app, email):
     app.inputs.email_input_page.open()
     app.inputs.email_input_page.submit_email(email)
     app.inputs.email_input_page.result_should_be(email)
 
+
 # NEGATIVE TEST
-@pytest.mark.parametrize(
-    "email",
-    [
-        "",                     # required
-        "plainaddress",         # no @
-        "@example.com",         # no local part
-        "user@",                # no domain
-        "user@.com",            # invalid domain
-        "user@domain",          # no TLD (except localhost!)
-        "user@domain..com",     # double dot
-        "user domain@test.com", # space
-    ]
-)
+@pytest.mark.parametrize("email", EmailData.INVALID_EMAILS)
 def test_email_rejects_invalid_input(app, email):
     app.inputs.email_input_page.open()
     app.inputs.email_input_page.submit_email(email)

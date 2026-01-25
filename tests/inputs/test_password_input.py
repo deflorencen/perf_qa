@@ -1,18 +1,9 @@
-
 import pytest
+from data.test_data import PasswordData
 
 
 # POSITIVE TEST
-@pytest.mark.parametrize(
-    "password",
-    [
-        "Abcdef1!",
-        "StrongPass1$",
-        "P@ssword123",
-        "Qwerty9*",
-        "Aa1!Aa1!"
-    ]
-)
+@pytest.mark.parametrize("password", PasswordData.VALID_PASSWORDS)
 def test_input_password(app, password):
     app.inputs.password_input_page.open()
     app.inputs.password_input_page.submit_password(password)
@@ -20,19 +11,7 @@ def test_input_password(app, password):
 
 
 # NEGATIVE TEST
-@pytest.mark.parametrize(
-    "password",
-    [
-        "",
-        "short1!",
-        "alllowercase1!",
-        "ALLUPPERCASE1!",
-        "NoDigits!",
-        "NoSpecial1",
-        "12345678!",
-        "abcdefgh",
-    ]
-)
+@pytest.mark.parametrize("password", PasswordData.INVALID_PASSWORDS)
 def test_password_rejects_invalid_input(app, password):
     app.inputs.password_input_page.open()
     app.inputs.password_input_page.submit_password(password)
