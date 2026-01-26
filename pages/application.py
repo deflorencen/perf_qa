@@ -6,6 +6,8 @@ from pages.inputs.pass_input_page import PasswordInputPage
 from pages.inputs.simple_input_page import InputPage
 from pages.buttons.simple_button_page import SimpleButtonPage
 from pages.buttons.disabled_button_page import DisableButtonPage
+from pages.checkbox.single_checkbox import SingleCheckboxPage
+from pages.checkbox.checkboxes import MultipleCheckboxPage
 
 
 class Application:
@@ -14,6 +16,7 @@ class Application:
 
         self.inputs = InputsGroup(page)
         self.buttons = ButtonsGroup(page)
+        self.checkboxes = CheckboxGroup(page)
 
 
 class InputsGroup:
@@ -22,8 +25,15 @@ class InputsGroup:
         self.email_input_page = EmailInputPage(page)
         self.password_input_page = PasswordInputPage(page)
 
+
 class ButtonsGroup:
     def __init__(self, page: Page):
         self.simple_button_page = SimpleButtonPage(page)
         self.like_a_button_page = LikeAButtonPage(page)
         self.disable_button_page = DisableButtonPage(page)
+
+
+class CheckboxGroup:
+    def __init__(self, page: Page):
+        self.single_checkbox_page = SingleCheckboxPage(page)
+        self.multiple_checkbox_page = MultipleCheckboxPage(page)
