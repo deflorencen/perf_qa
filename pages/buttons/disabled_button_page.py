@@ -7,7 +7,6 @@ class DisableButtonPage(BaseResultPage):
 
     def __init__(self, page: Page):
         super().__init__(page)
-        # self.submit_button = page.get_by_role("button", name="Submit")
         self.submit_button = page.locator("#submit-id-submit")
         self.state_dropdown = page.locator("#id_select_state")
 
