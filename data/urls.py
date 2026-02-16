@@ -16,3 +16,6 @@ class Urls:
         class Checkbox:
             SINGLE_CHECKBOX = f"{HOST}elements/checkbox/single_checkbox"
             MULTIPLE_CHECKBOX = f"{HOST}elements/checkbox/mult_checkbox"
+
+        class Selectors:
+            SINGLE_SELECT = f"{HOST}elements/select/single_select"

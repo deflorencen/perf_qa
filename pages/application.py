@@ -8,6 +8,7 @@ from pages.buttons.simple_button_page import SimpleButtonPage
 from pages.buttons.disabled_button_page import DisableButtonPage
 from pages.checkbox.single_checkbox import SingleCheckboxPage
 from pages.checkbox.checkboxes import MultipleCheckboxPage
+from pages.select.single_select import SingleSelectPage
 
 
 class Application:
@@ -17,6 +18,7 @@ class Application:
         self.inputs = InputsGroup(page)
         self.buttons = ButtonsGroup(page)
         self.checkboxes = CheckboxGroup(page)
+        self.selectors = SelectorGroup(page)
 
 
 class InputsGroup:
@@ -37,3 +39,8 @@ class CheckboxGroup:
     def __init__(self, page: Page):
         self.single_checkbox_page = SingleCheckboxPage(page)
         self.multiple_checkbox_page = MultipleCheckboxPage(page)
+
+
+class SelectorGroup:
+    def __init__(self, page: Page):
+        self.single_select_page = SingleSelectPage(page)
