@@ -11,6 +11,5 @@ class BaseResultPage(BasePage):
         expect(self.result_text).to_be_visible()
         expect(self.result_text).to_have_text(expected_text)
 
-
     def result_should_not_be_visible(self):
         expect(self.result_text).not_to_be_visible()

@@ -19,3 +19,4 @@ class Urls:
 
         class Selectors:
             SINGLE_SELECT = f"{HOST}elements/select/single_select"
+            MULTIPLE_SELECT = f"{HOST}elements/select/mult_select"
