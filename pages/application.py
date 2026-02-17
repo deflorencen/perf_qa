@@ -10,6 +10,7 @@ from pages.checkbox.single_checkbox import SingleCheckboxPage
 from pages.checkbox.checkboxes import MultipleCheckboxPage
 from pages.select.single_select import SingleSelectPage
 from pages.select.multiple_select import MultipleSelectPage
+from pages.new_tab.new_tab_link_page import NewTabLinkPage
 
 
 class Application:
@@ -20,6 +21,7 @@ class Application:
         self.buttons = ButtonsGroup(page)
         self.checkboxes = CheckboxGroup(page)
         self.selectors = SelectorGroup(page)
+        self.links = NewTabGroup(page)
 
 
 class InputsGroup:
@@ -46,3 +48,8 @@ class SelectorGroup:
     def __init__(self, page: Page):
         self.single_select_page = SingleSelectPage(page)
         self.multiple_select_page = MultipleSelectPage(page)
+
+
+class NewTabGroup:
+    def __init__(self, page: Page):
+        self.new_tab_link_page = NewTabLinkPage(page)
