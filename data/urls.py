@@ -23,3 +23,4 @@ class Urls:
 
         class Links:
             TAB_LINK = f"{HOST}elements/new_tab/link"
+            TAB_BUTTON = f"{HOST}elements/new_tab/button"

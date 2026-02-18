@@ -11,6 +11,7 @@ from pages.checkbox.checkboxes import MultipleCheckboxPage
 from pages.select.single_select import SingleSelectPage
 from pages.select.multiple_select import MultipleSelectPage
 from pages.new_tab.new_tab_link_page import NewTabLinkPage
+from pages.new_tab.new_tab_button_page import NewTabButtonPage
 
 
 class Application:
@@ -53,3 +54,4 @@ class SelectorGroup:
 class NewTabGroup:
     def __init__(self, page: Page):
         self.new_tab_link_page = NewTabLinkPage(page)
+        self.new_tab_button_page = NewTabButtonPage(page)
