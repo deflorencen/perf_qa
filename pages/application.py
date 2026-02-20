@@ -12,6 +12,8 @@ from pages.select.single_select import SingleSelectPage
 from pages.select.multiple_select import MultipleSelectPage
 from pages.new_tab.new_tab_link_page import NewTabLinkPage
 from pages.new_tab.new_tab_button_page import NewTabButtonPage
+from pages.textarea.text_area_page import SimpleTextAreaPage
+from pages.textarea.multiple_text_area_page import MultipleTextAreaPage
 
 
 class Application:
@@ -23,6 +25,7 @@ class Application:
         self.checkboxes = CheckboxGroup(page)
         self.selectors = SelectorGroup(page)
         self.links = NewTabGroup(page)
+        self.textarea = TextAreaGroup(page)
 
 
 class InputsGroup:
@@ -55,3 +58,9 @@ class NewTabGroup:
     def __init__(self, page: Page):
         self.new_tab_link_page = NewTabLinkPage(page)
         self.new_tab_button_page = NewTabButtonPage(page)
+
+
+class TextAreaGroup:
+    def __init__(self, page: Page):
+        self.simple_text_area_page = SimpleTextAreaPage(page)
+        self.multiple_text_area_page = MultipleTextAreaPage(page)

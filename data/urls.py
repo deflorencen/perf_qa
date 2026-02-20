@@ -24,3 +24,7 @@ class Urls:
         class Links:
             TAB_LINK = f"{HOST}elements/new_tab/link"
             TAB_BUTTON = f"{HOST}elements/new_tab/button"
+
+        class TextArea:
+            SIMPLE_TEXT_AREA = f"{HOST}elements/textarea/single"
+            MULTIPLE_TEXT_AREA = f"{HOST}elements/textarea/textareas"
