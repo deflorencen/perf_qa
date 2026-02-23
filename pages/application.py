@@ -14,6 +14,7 @@ from pages.new_tab.new_tab_link_page import NewTabLinkPage
 from pages.new_tab.new_tab_button_page import NewTabButtonPage
 from pages.textarea.text_area_page import SimpleTextAreaPage
 from pages.textarea.multiple_text_area_page import MultipleTextAreaPage
+from pages.alerts.alert_box_page import AlertBoxPage
 
 
 class Application:
@@ -26,6 +27,7 @@ class Application:
         self.selectors = SelectorGroup(page)
         self.links = NewTabGroup(page)
         self.textarea = TextAreaGroup(page)
+        self.alerts = AlertsGroup(page)
 
 
 class InputsGroup:
@@ -64,3 +66,8 @@ class TextAreaGroup:
     def __init__(self, page: Page):
         self.simple_text_area_page = SimpleTextAreaPage(page)
         self.multiple_text_area_page = MultipleTextAreaPage(page)
+
+
+class AlertsGroup:
+    def __init__(self, page: Page):
+        self.alert_box = AlertBoxPage(page)

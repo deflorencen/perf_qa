@@ -28,3 +28,6 @@ class Urls:
         class TextArea:
             SIMPLE_TEXT_AREA = f"{HOST}elements/textarea/single"
             MULTIPLE_TEXT_AREA = f"{HOST}elements/textarea/textareas"
+
+        class Alerts:
+            ALERT_BOX = f"{HOST}elements/alert/alert#"
