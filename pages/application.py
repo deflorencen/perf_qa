@@ -18,6 +18,7 @@ from pages.textarea.text_area_page import SimpleTextAreaPage
 from pages.textarea.multiple_text_area_page import MultipleTextAreaPage
 from pages.alerts.alert_box_page import AlertBoxPage
 from pages.alerts.confirmation_alert_page import ConfirmationAlertPage
+from pages.alerts.promt_box_page import PromptBoxPage
 
 
 class Application:
@@ -75,3 +76,4 @@ class AlertsGroup:
     def __init__(self, page: Page):
         self.alert_box = AlertBoxPage(page)
         self.confirm_box = ConfirmationAlertPage(page)
+        self.prompt_box = PromptBoxPage(page)
