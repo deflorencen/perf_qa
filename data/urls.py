@@ -33,3 +33,6 @@ class Urls:
             ALERT_BOX = f"{HOST}elements/alert/alert#"
             CONFIRM_BOX = f"{HOST}elements/alert/confirm#"
             PROMPT_BOX = f"{HOST}elements/alert/prompt#"
+
+        class Interactions:
+            BOXES = f"{HOST}elements/dragndrop/boxes"
