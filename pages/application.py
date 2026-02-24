@@ -1,5 +1,7 @@
 
 from playwright.sync_api import Page
+
+from pages.alerts.confirmation_alert_page import ConfirmationAlertPage
 from pages.buttons.looks_like_button_page import LikeAButtonPage
 from pages.inputs.email_input_page import EmailInputPage
 from pages.inputs.pass_input_page import PasswordInputPage
@@ -15,6 +17,7 @@ from pages.new_tab.new_tab_button_page import NewTabButtonPage
 from pages.textarea.text_area_page import SimpleTextAreaPage
 from pages.textarea.multiple_text_area_page import MultipleTextAreaPage
 from pages.alerts.alert_box_page import AlertBoxPage
+from pages.alerts.confirmation_alert_page import ConfirmationAlertPage
 
 
 class Application:
@@ -71,3 +74,4 @@ class TextAreaGroup:
 class AlertsGroup:
     def __init__(self, page: Page):
         self.alert_box = AlertBoxPage(page)
+        self.confirm_box = ConfirmationAlertPage(page)

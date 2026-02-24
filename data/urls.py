@@ -31,3 +31,4 @@ class Urls:
 
         class Alerts:
             ALERT_BOX = f"{HOST}elements/alert/alert#"
+            CONFIRM_BOX = f"{HOST}elements/alert/confirm#"
