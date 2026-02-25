@@ -20,6 +20,7 @@ from pages.alerts.alert_box_page import AlertBoxPage
 from pages.alerts.confirmation_alert_page import ConfirmationAlertPage
 from pages.alerts.promt_box_page import PromptBoxPage
 from pages.drag_and_drop.drag_n_drop_boxes_page import DragNDropBoxesPage
+from pages.drag_and_drop.drag_n_drop_images_page import DragNDropImagesPage
 
 
 class Application:
@@ -84,3 +85,4 @@ class AlertsGroup:
 class InteractionsGroup:
     def __init__(self, page: Page):
         self.boxes_page = DragNDropBoxesPage(page)
+        self.images_page = DragNDropImagesPage(page)

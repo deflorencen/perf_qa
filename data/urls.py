@@ -36,3 +36,4 @@ class Urls:
 
         class Interactions:
             BOXES = f"{HOST}elements/dragndrop/boxes"
+            IMAGES = f"{HOST}elements/dragndrop/images"
