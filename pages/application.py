@@ -21,6 +21,7 @@ from pages.alerts.confirmation_alert_page import ConfirmationAlertPage
 from pages.alerts.promt_box_page import PromptBoxPage
 from pages.drag_and_drop.drag_n_drop_boxes_page import DragNDropBoxesPage
 from pages.drag_and_drop.drag_n_drop_images_page import DragNDropImagesPage
+from pages.iframes.iframes_page import IframePage
 
 
 class Application:
@@ -35,6 +36,7 @@ class Application:
         self.textarea = TextAreaGroup(page)
         self.alerts = AlertsGroup(page)
         self.interactions = InteractionsGroup(page)
+        self.iframe = IframeGroup(page)
 
 
 class InputsGroup:
@@ -86,3 +88,8 @@ class InteractionsGroup:
     def __init__(self, page: Page):
         self.boxes_page = DragNDropBoxesPage(page)
         self.images_page = DragNDropImagesPage(page)
+
+
+class IframeGroup:
+    def __init__(self, page: Page):
+        self.simple_iframe_page = IframePage(page)

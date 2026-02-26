@@ -37,3 +37,6 @@ class Urls:
         class Interactions:
             BOXES = f"{HOST}elements/dragndrop/boxes"
             IMAGES = f"{HOST}elements/dragndrop/images"
+
+        class Iframes:
+            IFRAME = f"{HOST}elements/iframe/iframe_page"
