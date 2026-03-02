@@ -22,6 +22,7 @@ from pages.alerts.promt_box_page import PromptBoxPage
 from pages.drag_and_drop.drag_n_drop_boxes_page import DragNDropBoxesPage
 from pages.drag_and_drop.drag_n_drop_images_page import DragNDropImagesPage
 from pages.iframes.iframes_page import IframePage
+from pages.pop_up.modal_pop_up_page import ModalPopUpPage
 
 
 class Application:
@@ -37,6 +38,7 @@ class Application:
         self.alerts = AlertsGroup(page)
         self.interactions = InteractionsGroup(page)
         self.iframe = IframeGroup(page)
+        self.pop_ups = PopUpGroup(page)
 
 
 class InputsGroup:
@@ -93,3 +95,8 @@ class InteractionsGroup:
 class IframeGroup:
     def __init__(self, page: Page):
         self.simple_iframe_page = IframePage(page)
+
+
+class PopUpGroup:
+    def __init__(self, page: Page):
+        self.modal_pop_up_page = ModalPopUpPage(page)
