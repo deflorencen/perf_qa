@@ -43,3 +43,4 @@ class Urls:
 
         class PopUps:
             MODAL_POP_UP = f"{HOST}elements/popup/modal"
+            IFRAME_POP_UP = f"{HOST}elements/popup/iframe_popup"
