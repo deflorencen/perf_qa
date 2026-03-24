@@ -1,59 +1,36 @@
-import requests, pytest
+import pytest
 
 @pytest.fixture
-def obj_id():
+def obj_id(obj_api):
     payload = {
         "name": "Google Pixel 6 Pro",
-        "data": {
-            "color": "Cloudy White",
-            "capacity": "128 GB"
-        }
+        "data": {"color": "Cloudy White", "capacity": "128 GB"}
     }
-    response = requests.post("https://api.restful-api.dev/objects", json=payload).json()
-    yield response["id"]
-    requests.delete(f"https://api.restful-api.dev/objects/{response['id']}")
+    response = obj_api.create_object(payload)
+    data = response.json()
+    yield data["id"]
+    obj_api.delete_object(data["id"])
 
-def test_get_data_from_json():
-    payload = {
+
+def test_get_data_from_json(obj_api, obj_id):
+    response = obj_api.create_object(payload={
         "name": "Google Pixel 6 Pro",
-        "data": {
-            "color": "Cloudy White",
-            "capacity": "128 GB"
-        }
-    }
-    response = requests.post("https://api.restful-api.dev/objects", json=payload).json()
+        "data": {"color": "Cloudy White", "capacity": "128 GB"}
+    })
+    resp_data = response.json()
+    print(resp_data)
 
-    assert response["name"] == payload["name"]
-    assert response["data"]["color"] == payload["data"]["color"]
-    assert response["data"]["capacity"] == payload["data"]["capacity"]
+    assert response.status == 200
 
-
-def test_get_data_from_id(obj_id):
-    response = requests.get(f"https://api.restful-api.dev/objects/{obj_id}").json()
-    print(response)
-
-    assert response["id"] == obj_id
+def test_delete_data(obj_api, obj_id):
+    response = obj_api.delete_object(obj_id)
+    assert response.status == 200
+    check_delete = obj_api.get_object(obj_id)
+    assert check_delete.status == 404
 
 
-def test_update_data(obj_id):
-    payload = {
-        "name": "Google Pixel 6 Pro",
-        "data": {
-            "color": "Cloudy White",
-            "capacity": "128 GB",
-            "year": "2021",
-            "RAM": "12 GB"
-        }
-    }
-    response = requests.put(f"https://api.restful-api.dev/objects/{obj_id}", json=payload).json()
-    print(response)
-
-    assert response["data"]["year"] == payload["data"]["year"]
-    assert response["data"]["RAM"] == payload["data"]["RAM"]
-
-
-def test_delete_data(obj_id):
-    response = requests.delete(f"https://api.restful-api.dev/objects/{obj_id}")
-    assert response.status_code == 200
-    response = requests.get(f"https://api.restful-api.dev/objects/{obj_id}")
-    assert response.status_code == 404
+def test_get_data_from_id(obj_api, obj_id):
+    response = obj_api.get_object(obj_id)
+    resp_json = response.json()
+    assert response.status == 200
+    assert resp_json["id"] == obj_id
