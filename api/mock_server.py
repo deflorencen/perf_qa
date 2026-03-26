@@ -7,8 +7,9 @@ app = FastAPI(title="My Testing API")
 db = {}
 
 class ObjectData(BaseModel):
-    name: str
-    data: dict = None
+    name: Optional[str] = None
+    data: Optional[dict] = None
+
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
@@ -16,7 +17,8 @@ async def log_requests(request: Request, call_next):
     print(f"Request {request.method} {request.url.path} | Status: {response.status_code}")
     return response
 
-@app.post("/objects")
+
+@app.post("/objects", status_code=200)
 async def create_object(obj: ObjectData):
     obj_id = str(uuid.uuid4())
     new_obj = {"id": obj_id, "name": obj.name, "data": obj.data}
@@ -28,6 +30,19 @@ async def get_object(obj_id: str):
     if obj_id not in db:
         raise HTTPException(status_code=404, detail="Object not found")
     return db[obj_id]
+
+
+@app.patch("/objects/{obj_id}")
+async def update_object_patch(obj_id: str, obj: ObjectData):
+    if obj_id not in db:
+        raise HTTPException(status_code=404, detail="Not found")
+
+    stored_obj = db[obj_id]
+    update_data = obj.model_dump(exclude_unset=True)
+
+    stored_obj.update(update_data)
+    return stored_obj
+
 
 @app.delete("/objects/{obj_id}")
 async def delete_object(obj_id: str):

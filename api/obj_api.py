@@ -13,3 +13,6 @@ class ObjectsApi:
 
     def get_object(self, obj_id: str):
         return self.request.get(f"{self.endpoint}/{obj_id}")
+
+    def patch_object(self, obj_id: str, payload: dict):
+        return self.request.patch(f"{self.endpoint}/{obj_id}", data=payload)
