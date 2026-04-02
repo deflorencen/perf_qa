@@ -54,3 +54,17 @@ def test_patch_data(obj_api, obj_id):
     assert resp_json["data"]["color"] == "Stormy Black"
     assert resp_json["data"]["capacity"] == "128 GB"
     assert resp_json["data"]["RAM"] == "12 GB"
+
+
+def test_update_object_full(obj_api, obj_id):
+    new_payload = {
+        "name": "iPhone 15 Pro Max",
+        "data": {"color": "Natural Titanium", "price": 1199}
+    }
+
+    response = obj_api.update_object_full(obj_id, new_payload)
+    assert response.status == 200
+
+    data = response.json()
+    assert data["name"] == "iPhone 15 Pro Max"
+    assert data["data"]["color"] == "Natural Titanium"

@@ -44,11 +44,21 @@ async def update_object_patch(obj_id: str, obj: ObjectData):
     return stored_obj
 
 
+@app.put("/objects/{obj_id}")
+async def update_object_put(obj_id: str, obj: ObjectData):
+    if obj_id not in db:
+        raise HTTPException(status_code=404, detail="Not found")
+
+    updated_obj = {"id": obj_id, "name": obj.name, "data": obj.data}
+    db[obj_id] = updated_obj
+    return updated_obj
+
+
 @app.delete("/objects/{obj_id}")
 async def delete_object(obj_id: str):
     if obj_id in db:
         del db[obj_id]
-        return {"message": "Object deleted"}
+        return {"message": "Object deleted"} 
     raise HTTPException(status_code=404, detail="Object not found")
 
 if __name__ == "__main__":

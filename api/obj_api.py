@@ -16,3 +16,6 @@ class ObjectsApi:
 
     def patch_object(self, obj_id: str, payload: dict):
         return self.request.patch(f"{self.endpoint}/{obj_id}", data=payload)
+
+    def update_object_full(self, obj_id: str, payload: dict):
+        return self.request.put(f"{self.endpoint}/{obj_id}", data=payload)
